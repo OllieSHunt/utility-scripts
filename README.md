@@ -1,2 +1,2 @@
-# utility-scripts
+# Utility Scripts
 Some usefull scripts.
