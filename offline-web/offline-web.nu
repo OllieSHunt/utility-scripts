@@ -22,6 +22,9 @@ let WAIT_TIME = 1
 # Limit download speed.
 let RATE_LIMIT = '20k'
 
+# Number of times to try a download before giving up.
+let TRIES = 4
+
 
 #### MAIN FUNCTION AND SUBCOMMANDS ####
 
@@ -66,6 +69,7 @@ def 'main clone' [
         --adjust-extension
         --convert-links
         --directory-prefix=($download_dir)
+        --tries=($TRIES)
         (if $full_site { '--mirror' } else { '' })
         (if $recursive { '--recursive' } else { '' })
         (if $other { '--span-hosts' } else { '' })
