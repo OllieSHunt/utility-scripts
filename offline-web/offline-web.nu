@@ -42,11 +42,12 @@ def 'main clone' [
   url: string,      # URL to the website/webpage to download.
   name: string,     # What to save the website as.
   --full-site (-f), # Download the full website instead of just one page.
+  --recursive (-r), # Recursively fetch websites.
   --other (-o),     # Fetch other websites when using `--full-site`.
   --parent (-p),    # Enable ascending to the parent directory.
   # TODO: --continue (-c),  # Continue download where it was left off.
 ] {
-  print "NOTE: In the event that a download fails half way through, you can use\n      the "clean" subcommand to clean remove the half downloaded website.\n"
+  print "NOTE: In the event that a download fails half way through, you can use the "clean" subcommand to clean remove the half downloaded website.\n"
 
   #### SETUP VAIRABLES ####
 
@@ -66,6 +67,7 @@ def 'main clone' [
         --convert-links
         --directory-prefix=($download_dir)
         (if $full_site { '--mirror' } else { '' })
+        (if $recursive { '--recursive' } else { '' })
         (if $other { '--span-hosts' } else { '' })
         (if $parent { '' } else { '--no-parent' })
     ]
